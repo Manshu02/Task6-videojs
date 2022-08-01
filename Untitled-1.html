@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(128, 88, 115);
+        }
+       #box{
+        display: block;
+        position: absolute;
+       }
+        #myvideo{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            left: 550px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box" >
+        <video src="http://techslides.com/demos/sample-videos/small.mp4" id="myvideo" width="320" height="240" controls style="background:black">
+        </video>
+       
+      </div>
+
+
+      <script>
+        var vid = document.getElementById('myvideo');
+    var vids = [
+            "http://techslides.com/demos/sample-videos/small.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            
+           
+    ];
+var activeVideo = 0;
+
+vid.addEventListener('ended', function(e) {
+  //to update the next video
+  activeVideo = (++activeVideo) % vids.length;
+
+  // to update the source and play
+  vid.src = vids[activeVideo];
+  vid.play();
+});
+      </script>
+    
+</body>
+</html>
